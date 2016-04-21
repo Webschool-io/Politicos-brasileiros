@@ -16,7 +16,7 @@ Antes de metermos o dedo precisamos conhecer melhor a área onde iremos atuar e 
 
 *fonte: [http://www.ebc.com.br/noticias/politica/2013/07/como-funciona-o-sistema-eleitoral-brasileiro](http://www.ebc.com.br/noticias/politica/2013/07/como-funciona-o-sistema-eleitoral-brasileiro)*
 
-## Entidades - Organismos
+## Entidades
 
 Inicialmente definimos qual são as entidades do nosso sistema, você pode pensar nisso como *classes*:
 
@@ -30,7 +30,7 @@ Percebeu que temos 3 entidades que estão diretamente ligadas à `Político` cas
 
 Após definirmos as entidades precisamos definir cada campo(atômico) que os compõe.
 
-### Partido - Molécula
+### Partido
 
 Pegando os dados [daqui http://www.tse.jus.br/partidos/partidos-politicos/registrados-no-tse](http://www.tse.jus.br/partidos/partidos-politicos/registrados-no-tse) temos:
 
@@ -64,10 +64,10 @@ Logo nossa Molécula(Schema) ficará:
 {
   sigla: String
 , nome: String
-, numero: Number
+, numeroPartido: Number
 , presidente: String
-, dataCriacao: String
-, dataRegistroDefinitivo: String
+, dataCriacao: Date
+, dataRegistroDefinitivo: Date
 , numeroAfiliados: Number
 , espectroPolitico: String
 , ideologia: String
@@ -169,9 +169,13 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 ### sigla
 
 ```js
-{
+'use strict';
+
+const AtomName = 'sigla';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 , required: true
 }
 ```
@@ -190,7 +194,7 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 
 ```js
 {
-  type: String
+  type: Number
 , validate: require('./../hadrons/numeroPartidoValidateMongoose')
 , required: true
 }
@@ -228,7 +232,7 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 
 ```js
 {
-  type: String
+  type: Number
 , validate: require('./../hadrons/numeroAfiliadosValidateMongoose')
 }
 ```
@@ -339,99 +343,43 @@ Porém são 2 átomos independentes.
 ### impeachment
 
 ```js
-{
+'use strict';
+
+const AtomName = 'impeachment';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/impeachmentValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
 
-### partido_id
+## Moléculas
+
+### Partido
 
 ```js
-{
-  type: String
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Molecule = {
+  sigla: require('./../atoms/sigla')
+, nome: require('./../atoms/nome')
+, numero: require('./../atoms/numero')
+, presidente: require('./../atoms/presidente')
+, dataCriacao: require('./../atoms/dataCriacao')
+, dataRegistroDefinitivo: require('./../atoms/dataRegistroDefinitivo')
+, numeroAfiliados: require('./../atoms/numeroAfiliados')
+, espectroPolitico: require('./../atoms/espectroPolitico')
+, ideologia: require('./../atoms/ideologia')
+, site: require('./../atoms/site')
+, email: require('./../atoms/email')
+, telefoneCompleto: require('./../atoms/telefoneCompleto')
+, faxCompleto: require('./../atoms/faxCompleto')
+, enderecoPartido: require('./../atoms/enderecoPartido')
+, impeachment: require('./../atoms/impeachment')
 }
-```
 
-
-### cidade
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### estado
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### votosRecebidos
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### partidosAnteriores
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### denuncias
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### condenacoes
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### projetos
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### votacoes
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
+module.exports = new Schema(Molecule);
 ```
 
 
