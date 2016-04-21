@@ -75,14 +75,14 @@ Logo nossa Molécula(Schema) ficará:
 , email: String
 , telefone: String
 , fax: String
-, endereco: Object
+, enderecoPartido: Object
 , impeachment: Boolean
 }
 ```
 
 Não iremos separar o DDD do Telefone como seria o comum só porque não há necessidade de termos esses dados em separado e adicionei diretamente a *flag* `impeachment` para definir diretamente na sua entidade qual foi seu voto pois inicialmente é o foco principal do nosso sistema, cruzar os dados dos políticos e suas votações.
 
-Perceba ali que `endereco` é um `Object` pois na verdade ali nós teremos um outro *Schema* que será:
+Perceba ali que uso `enderecoPartido` em vez de `endereco` pois o Átomo que temos de endereço é diferente do que precisamos aqui e ele é um `Object` pois na verdade ali nós teremos um outro *Schema* que será:
 
 ```js
 {
@@ -129,8 +129,8 @@ Então vamos separar cada átomo das 2 entidades!
 , nome: String
 , numero: Number
 , presidente: String
-, dataCriacao: String
-, dataRegistroDefinitivo: String
+, dataCriacao: Date
+, dataRegistroDefinitivo: Date
 , numeroAfiliados: Number
 , espectroPolitico: String
 , ideologia: String
@@ -156,77 +156,284 @@ Então vamos separar cada átomo das 2 entidades!
 }
 ```
 
+Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
+
+```js
+{
+  type: String
+, validate: require('')
+, required: true
+}
+```
+
 ### sigla
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+, required: true
+}
+```
 
 ### nome
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/nomeValidateMongoose')
+, required: true
+}
+```
 
 ### numero
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/numeroValidateMongoose')
+, required: true
+}
+```
 
 ### presidente
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/presidenteValidateMongoose')
+}
+```
 
 ### dataCriacao
 
+```js
+{
+  type: Date
+, validate: require('./../hadrons/dataCriacaoValidateMongoose')
+}
+```
 
 ### dataRegistroDefinitivo
+
+```js
+{
+  type: Date
+, validate: require('./../hadrons/dataRegistroDefinitivoValidateMongoose')
+}
+```
 
 
 ### numeroAfiliados
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/numeroAfiliadosValidateMongoose')
+}
+```
+
 
 ### espectroPolitico
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/espectroPoliticoValidateMongoose')
+}
+```
 
 
 ### ideologia
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/ideologiaValidateMongoose')
+}
+```
+
 
 ### site
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/siteValidateMongoose')
+}
+```
 
 
 ### email
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/emailValidateMongoose')
+}
+```
+
 
 ### telefone
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/telefoneValidateMongoose')
+}
+```
 
 
 ### fax
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/faxValidateMongoose')
+}
+```
 
-### endereco
 
+### enderecoPartido
+
+Esse Átomo na verdade é uma composição de outros 2 átomos:
+
+- completo
+- cep
+
+Por isso ficará assim:
+
+```js
+{
+  completo: {
+    type: String
+  , validate: require('./../hadrons/enderecoPartidoCompletoValidateMongoose')
+  }
+, cep: {
+    type: String
+  , validate: require('./../hadrons/enderecoPartidoCEPValidateMongoose')
+  }
+}
+```
+
+Porém são 2 átomos independentes.
+
+### enderecoPartidoCompleto
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/enderecoPartidoCompletoValidateMongoose')
+}
+```
+
+### enderecoPartidoCEP
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/enderecoPartidoCEPValidateMongoose')
+}
+```
 
 ### impeachment
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/impeachmentValidateMongoose')
+}
+```
 
 
 ### partido_id
 
-
-### nome
+```js
+{
+  type: String
+}
+```
 
 
 ### cidade
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
+
 
 ### estado
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
 
 
 ### votosRecebidos
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
+
 
 ### partidosAnteriores
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
 
 
 ### denuncias
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
+
 
 ### condenacoes
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
 
 
 ### projetos
 
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
 
-### vota
 
-coes
+### votacoes
+
+```js
+{
+  type: String
+, validate: require('./../hadrons/siglaValidateMongoose')
+}
+```
+
+
+
+
