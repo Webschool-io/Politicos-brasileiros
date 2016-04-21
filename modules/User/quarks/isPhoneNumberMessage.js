@@ -1,0 +1,1 @@
+module.exports = 'O número de telefone {VALUE} precisa ter tamanho IGUAL a 8 ou 9 dígitos!';
