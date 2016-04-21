@@ -16,7 +16,7 @@ Antes de metermos o dedo precisamos conhecer melhor a área onde iremos atuar e 
 
 *fonte: [http://www.ebc.com.br/noticias/politica/2013/07/como-funciona-o-sistema-eleitoral-brasileiro](http://www.ebc.com.br/noticias/politica/2013/07/como-funciona-o-sistema-eleitoral-brasileiro)*
 
-## Entidades
+## Entidades - Organismos
 
 Inicialmente definimos qual são as entidades do nosso sistema, você pode pensar nisso como *classes*:
 
@@ -30,7 +30,7 @@ Percebeu que temos 3 entidades que estão diretamente ligadas à `Político` cas
 
 Após definirmos as entidades precisamos definir cada campo(atômico) que os compõe.
 
-### Partido
+### Partido - Molécula
 
 Pegando os dados [daqui http://www.tse.jus.br/partidos/partidos-politicos/registrados-no-tse](http://www.tse.jus.br/partidos/partidos-politicos/registrados-no-tse) temos:
 
@@ -92,7 +92,7 @@ Perceba ali que `endereco` é um `Object` pois na verdade ali nós teremos um ou
 ```
 
 
-### Político
+### Político - Molécula
 
 Agora chegamos no principal onde iremos definir quais Átomos(campos) compõe essa Molécula, para termos apenas os dados que interessa não colocaremos tudo, ficando assim:
 
@@ -115,10 +115,118 @@ A informação dos `votosRecebidos` é muito importante para vermos quais são o
 
 Eu iria colocar em `votacoes` os dados de cada sessão, porém se formos cruzar dados de votantes de cada votação será melhor que separemos ela em uma coleção nova e nesse *Array* em Político precisaremos apenas adicionar `votacao_id` nesse *Array*, entretanto como não é nosso foco inicial irei deixar sem por hora.
 
+## Campos - Átomos
+
+> Como vimos anteriormente definimos já quais são nossos campos então o que eu preciso definir nessa etapa?
+
+**A definição de cada campo/átomo.**
+
+Então vamos separar cada átomo das 2 entidades!
+
+```js
+{
+  sigla: String
+, nome: String
+, numero: Number
+, presidente: String
+, dataCriacao: String
+, dataRegistroDefinitivo: String
+, numeroAfiliados: Number
+, espectroPolitico: String
+, ideologia: String
+, site: String
+, email: String
+, telefone: String
+, fax: String
+, endereco: Object
+, impeachment: Boolean
+}
+
+{
+  partido_id: String
+, nome: String
+, cidade: String
+, estado: String
+, votosRecebidos: Number
+, partidosAnteriores: Array
+, denuncias: Array
+, condenacoes: Array
+, projetos: Array
+, votacoes: Array
+}
+```
+
+### sigla
+
+### nome
 
 
+### numero
 
 
+### presidente
 
 
+### dataCriacao
 
+
+### dataRegistroDefinitivo
+
+
+### numeroAfiliados
+
+
+### espectroPolitico
+
+
+### ideologia
+
+
+### site
+
+
+### email
+
+
+### telefone
+
+
+### fax
+
+
+### endereco
+
+
+### impeachment
+
+
+### partido_id
+
+
+### nome
+
+
+### cidade
+
+
+### estado
+
+
+### votosRecebidos
+
+
+### partidosAnteriores
+
+
+### denuncias
+
+
+### condenacoes
+
+
+### projetos
+
+
+### vota
+
+coes
