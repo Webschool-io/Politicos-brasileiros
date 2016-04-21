@@ -73,8 +73,8 @@ Logo nossa Molécula(Schema) ficará:
 , ideologia: String
 , site: String
 , email: String
-, telefone: String
-, fax: String
+, telefoneCompleto: String
+, faxCompleto: String
 , enderecoPartido: Object
 , impeachment: Boolean
 }
@@ -82,7 +82,7 @@ Logo nossa Molécula(Schema) ficará:
 
 Não iremos separar o DDD do Telefone como seria o comum só porque não há necessidade de termos esses dados em separado e adicionei diretamente a *flag* `impeachment` para definir diretamente na sua entidade qual foi seu voto pois inicialmente é o foco principal do nosso sistema, cruzar os dados dos políticos e suas votações.
 
-Perceba ali que uso `enderecoPartido` em vez de `endereco` pois o Átomo que temos de endereço é diferente do que precisamos aqui e ele é um `Object` pois na verdade ali nós teremos um outro *Schema* que será:
+Perceba ali que uso `enderecoPartido` em vez de `endereco` pois o Átomo que temos de endereço é diferente do que precisamos aqui, assim como `telefoneCompleto` e ele é um `Object` pois na verdade ali nós teremos um outro *Schema* que será:
 
 ```js
 {
@@ -127,7 +127,7 @@ Então vamos separar cada átomo das 2 entidades!
 {
   sigla: String
 , nome: String
-, numero: Number
+, numeroPartido: Number
 , presidente: String
 , dataCriacao: Date
 , dataRegistroDefinitivo: Date
@@ -136,8 +136,8 @@ Então vamos separar cada átomo das 2 entidades!
 , ideologia: String
 , site: String
 , email: String
-, telefone: String
-, fax: String
+, telefoneCompleto: String
+, faxCompleto: String
 , endereco: Object
 , impeachment: Boolean
 }
@@ -186,12 +186,12 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 }
 ```
 
-### numero
+### numeroPartido
 
 ```js
 {
   type: String
-, validate: require('./../hadrons/numeroValidateMongoose')
+, validate: require('./../hadrons/numeroPartidoValidateMongoose')
 , required: true
 }
 ```
@@ -274,7 +274,7 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 ```
 
 
-### telefone
+### telefoneCompleto
 
 ```js
 {
@@ -284,7 +284,7 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 ```
 
 
-### fax
+### faxCompleto
 
 ```js
 {

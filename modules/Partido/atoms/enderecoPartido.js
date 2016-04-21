@@ -1,9 +1,8 @@
 'use strict';
 
-const AtomName = 'name';
+const AtomName = 'enderecoPartido';
 
 module.exports = {
   type: String
 , validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
-, 
 }
