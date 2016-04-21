@@ -16,7 +16,7 @@ Antes de metermos o dedo precisamos conhecer melhor a área onde iremos atuar e 
 
 *fonte: [http://www.ebc.com.br/noticias/politica/2013/07/como-funciona-o-sistema-eleitoral-brasileiro](http://www.ebc.com.br/noticias/politica/2013/07/como-funciona-o-sistema-eleitoral-brasileiro)*
 
-## Entidades - Organismos
+## Entidades
 
 Inicialmente definimos qual são as entidades do nosso sistema, você pode pensar nisso como *classes*:
 
@@ -30,7 +30,7 @@ Percebeu que temos 3 entidades que estão diretamente ligadas à `Político` cas
 
 Após definirmos as entidades precisamos definir cada campo(atômico) que os compõe.
 
-### Partido - Molécula
+### Partido
 
 Pegando os dados [daqui http://www.tse.jus.br/partidos/partidos-politicos/registrados-no-tse](http://www.tse.jus.br/partidos/partidos-politicos/registrados-no-tse) temos:
 
@@ -432,6 +432,34 @@ Porém são 2 átomos independentes.
   type: String
 , validate: require('./../hadrons/siglaValidateMongoose')
 }
+```
+
+## Moléculas
+
+### Partido
+
+```js
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Molecule = {
+  sigla: require('./../atoms/sigla')
+, nome: require('./../atoms/nome')
+, numero: require('./../atoms/numero')
+, presidente: require('./../atoms/presidente')
+, dataCriacao: require('./../atoms/dataCriacao')
+, dataRegistroDefinitivo: require('./../atoms/dataRegistroDefinitivo')
+, numeroAfiliados: require('./../atoms/numeroAfiliados')
+, espectroPolitico: require('./../atoms/espectroPolitico')
+, ideologia: require('./../atoms/ideologia')
+, site: require('./../atoms/site')
+, email: require('./../atoms/email')
+, telefoneCompleto: require('./../atoms/telefoneCompleto')
+, faxCompleto: require('./../atoms/faxCompleto')
+, enderecoPartido: require('./../atoms/enderecoPartido')
+, impeachment: require('./../atoms/impeachment')
+}
+
+module.exports = new Schema(Molecule);
 ```
 
 
