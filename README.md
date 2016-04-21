@@ -64,10 +64,10 @@ Logo nossa Molécula(Schema) ficará:
 {
   sigla: String
 , nome: String
-, numero: Number
+, numeroPartido: Number
 , presidente: String
-, dataCriacao: String
-, dataRegistroDefinitivo: String
+, dataCriacao: Date
+, dataRegistroDefinitivo: Date
 , numeroAfiliados: Number
 , espectroPolitico: String
 , ideologia: String
@@ -190,7 +190,7 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 
 ```js
 {
-  type: String
+  type: Number
 , validate: require('./../hadrons/numeroPartidoValidateMongoose')
 , required: true
 }
@@ -228,7 +228,7 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 
 ```js
 {
-  type: String
+  type: Number
 , validate: require('./../hadrons/numeroAfiliadosValidateMongoose')
 }
 ```
