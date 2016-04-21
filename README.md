@@ -76,10 +76,12 @@ Logo nossa Molécula(Schema) ficará:
 , telefone: String
 , fax: String
 , endereco: Object
+, impeachment: Boolean
+, votacoes: Array
 }
 ```
 
-Não iremos separar o DDD do Telefone como seria o comum só porque não há necessidade de termos esses dados em separado.
+Não iremos separar o DDD do Telefone como seria o comum só porque não há necessidade de termos esses dados em separado e adicionei diretamente a *flag* `impeachment` para definir diretamente na sua entidade qual foi seu voto pois inicialmente é o foco principal do nosso sistema, cruzar os dados dos políticos e suas votações.
 
 Perceba ali que `endereco` é um `Object` pois na verdade ali nós teremos um outro *Schema* que será:
 
@@ -90,6 +92,7 @@ Perceba ali que `endereco` é um `Object` pois na verdade ali nós teremos um ou
 }
 ```
 
+Eu iria colocar em `votacoes` os dados de cada sessão, porém se formos cruzar dados de votantes de cada votação será melhor que separemos ela em uma coleção nova e nesse *Array* em Político precisaremos apenas adicionar `votacao_id` nesse *Array*, entretanto como não é nosso foco inicial irei deixar sem por hora.
 
 ### Político
 
