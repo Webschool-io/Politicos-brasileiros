@@ -1,8 +1,8 @@
 'use strict';
 
-const AtomName = 'DataRegistroDefinitivo';
+const AtomName = 'EnderecoPartidoCEP';
 
 module.exports = {
-  type: Date
+  type: String
 , validate: require('./../hadrons/ValidateMongoose')('is'+AtomName)
 }

@@ -138,7 +138,7 @@ Então vamos separar cada átomo das 2 entidades!
 , email: String
 , telefoneCompleto: String
 , faxCompleto: String
-, endereco: Object
+, enderecoPartido: Object
 , impeachment: Boolean
 }
 
@@ -183,19 +183,27 @@ module.exports = {
 ### nome
 
 ```js
-{
+'use strict';
+
+const AtomName = 'name';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/nomeValidateMongoose')
-, required: true
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
+, 
 }
 ```
 
 ### numeroPartido
 
 ```js
-{
-  type: Number
-, validate: require('./../hadrons/numeroPartidoValidateMongoose')
+'use strict';
+
+const AtomName = 'numeroPartido';
+
+module.exports = {
+  type: String
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 , required: true
 }
 ```
@@ -203,27 +211,39 @@ module.exports = {
 ### presidente
 
 ```js
-{
+'use strict';
+
+const AtomName = 'presidente';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/presidenteValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
 ### dataCriacao
 
 ```js
-{
-  type: Date
-, validate: require('./../hadrons/dataCriacaoValidateMongoose')
+'use strict';
+
+const AtomName = 'dataCriacao';
+
+module.exports = {
+  type: String
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
 ### dataRegistroDefinitivo
 
 ```js
-{
-  type: Date
-, validate: require('./../hadrons/dataRegistroDefinitivoValidateMongoose')
+'use strict';
+
+const AtomName = 'dataRegistroDefinitivo';
+
+module.exports = {
+  type: String
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -231,9 +251,13 @@ module.exports = {
 ### numeroAfiliados
 
 ```js
-{
-  type: Number
-, validate: require('./../hadrons/numeroAfiliadosValidateMongoose')
+'use strict';
+
+const AtomName = 'numeroAfiliado';
+
+module.exports = {
+  type: String
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -241,9 +265,13 @@ module.exports = {
 ### espectroPolitico
 
 ```js
-{
+'use strict';
+
+const AtomName = 'espectroPolitico';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/espectroPoliticoValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -251,9 +279,13 @@ module.exports = {
 ### ideologia
 
 ```js
-{
+'use strict';
+
+const AtomName = 'ideologia';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/ideologiaValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -261,9 +293,13 @@ module.exports = {
 ### site
 
 ```js
-{
+'use strict';
+
+const AtomName = 'site';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/siteValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -271,9 +307,14 @@ module.exports = {
 ### email
 
 ```js
-{
+'use strict';
+
+const AtomName = 'email';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/emailValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
+, required: true
 }
 ```
 
@@ -281,9 +322,13 @@ module.exports = {
 ### telefoneCompleto
 
 ```js
-{
+'use strict';
+
+const AtomName = 'telefoneCompleto';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/telefoneValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -291,9 +336,13 @@ module.exports = {
 ### faxCompleto
 
 ```js
-{
+'use strict';
+
+const AtomName = 'faxCompleto';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/faxValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -325,18 +374,26 @@ Porém são 2 átomos independentes.
 ### enderecoPartidoCompleto
 
 ```js
-{
+'use strict';
+
+const AtomName = 'enderecoPartidoCompleto';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/enderecoPartidoCompletoValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
 ### enderecoPartidoCEP
 
 ```js
-{
+'use strict';
+
+const AtomName = 'enderecoPartidoCEP';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/enderecoPartidoCEPValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
@@ -355,6 +412,8 @@ module.exports = {
 
 
 ## Moléculas
+
+Bom após definido todos nosso Átomos o mais correto é partir para criar os Quarks, porém vamos definir agora nossas Moléculas pois após definido seus Átomos não iremos mais modificar, por hora.
 
 ### Partido
 
@@ -382,6 +441,50 @@ const Molecule = {
 module.exports = new Schema(Molecule);
 ```
 
+## Hadrons
 
+Como os Hádrons não **podem adicionar nenhum tipo de lógica** nós definimos apenas 1 como padrão para todos:
+
+```js
+'use strict';
+
+const QuarkName = 'isEmail';
+
+module.exports = {
+  validator: require('./../quarks/'+QuarkName)
+, message: require('./../quarks/'+QuarkName+'Message')
+};
+```
+
+Bom se temos uma padrão bem claro onde só irá mudar o nome do Quarks podemos fazer uma Fábrica para eles dessa forma:
+
+```js
+'use strict';
+
+module.exports = (QuarkName) => {
+  return {
+    validator: require('./../quarks/'+QuarkName)
+  , message: require('./../quarks/'+QuarkName+'Message')
+  }
+};
+```
+
+Logo nossos Átomos ficarão assim:
+
+```js
+'use strict';
+
+const AtomName = 'Email';
+
+module.exports = {
+  type: String
+, validate: require('./../hadrons/ValidateMongoose')('is'+AtomName)
+, required: true
+}
+```
+
+Ou seja, pode refatorar os átomos anteriores. :p
+
+## Quarks
 
 
