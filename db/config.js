@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost/be-mean-instagram';
+const dbURI = 'mongodb://localhost/politicos-brasileiros-db';
 
 mongoose.connect(dbURI);
 
@@ -22,3 +22,6 @@ process.on('SIGINT', function() {
     process.exit(0);
   });
 });
+
+//Partido
+mongoose.model('Partido', require('../modules/Partido/molecules/partido'))

@@ -5,8 +5,8 @@ const Molecule = {
 
   sigla: require('./../atoms/sigla')
 , nome: require('./../atoms/nome')
-//, numero: require('./../atoms/numero') ? Que numero eh esse ? 
-, numeroPartido: require('./../atoms/numeroPartido');
+//, numero: require('./../atoms/numero') ? Que numero eh esse ?
+, numeroPartido: require('./../atoms/numeroPartido')
 , presidente: require('./../atoms/presidente')
 , dataCriacao: require('./../atoms/dataCriacao')
 , dataRegistroDefinitivo: require('./../atoms/dataRegistroDefinitivo')
