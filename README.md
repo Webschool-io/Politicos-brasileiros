@@ -487,4 +487,50 @@ Ou seja, pode refatorar os átomos anteriores sem esquecer de mudar para maiúsc
 
 ## Quarks
 
+Como definimos o padrão do Hádron onde ele **SEMPRE** irá importar o Quark `isAtomName` logo devemos **necessariamente** criar cada um dos Quarks validadores para os Átomos.
+
+### isSigla
+
+
+### isNome
+
+
+### isNumeroPartido
+
+
+### isPresidente
+
+
+### isDataCriacao
+
+
+### isDataRegistroDefinitivo
+
+
+### isNumeroAfiliados
+
+
+### isEspectroPolitico
+
+
+### isIdeologia
+
+
+### isSite
+
+
+### isEmail
+
+
+### isTelefoneCompleto
+
+
+### isFaxCompleto
+
+
+### isEnderecoPartido
+
+
+### isImpeachment
+
 
