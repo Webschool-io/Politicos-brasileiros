@@ -1,6 +1,6 @@
 'use strict';
 
-const AtomName = 'NumeroAfiliado';
+const AtomName = 'NumeroAfiliados';
 
 module.exports = {
   type: Number
