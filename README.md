@@ -77,7 +77,6 @@ Logo nossa Molécula(Schema) ficará:
 , fax: String
 , endereco: Object
 , impeachment: Boolean
-, votacoes: Array
 }
 ```
 
@@ -92,7 +91,6 @@ Perceba ali que `endereco` é um `Object` pois na verdade ali nós teremos um ou
 }
 ```
 
-Eu iria colocar em `votacoes` os dados de cada sessão, porém se formos cruzar dados de votantes de cada votação será melhor que separemos ela em uma coleção nova e nesse *Array* em Político precisaremos apenas adicionar `votacao_id` nesse *Array*, entretanto como não é nosso foco inicial irei deixar sem por hora.
 
 ### Político
 
@@ -109,11 +107,13 @@ Agora chegamos no principal onde iremos definir quais Átomos(campos) compõe es
 , denuncias: Array
 , condenacoes: Array
 , projetos: Array
+, votacoes: Array
 }
 ```
 
 A informação dos `votosRecebidos` é muito importante para vermos quais são os políticos que realmente se elegeram com seus votos e a informação sobre os `partidosAnteriores` para sabermos se ele não honra sua legenda visto que o formato eleitoral brasileiro os votos recebidos antes vão para o Partido e depois para os Políticos.
 
+Eu iria colocar em `votacoes` os dados de cada sessão, porém se formos cruzar dados de votantes de cada votação será melhor que separemos ela em uma coleção nova e nesse *Array* em Político precisaremos apenas adicionar `votacao_id` nesse *Array*, entretanto como não é nosso foco inicial irei deixar sem por hora.
 
 
 
