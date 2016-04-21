@@ -483,7 +483,7 @@ module.exports = {
 }
 ```
 
-Ou seja, pode refatorar os átomos anteriores. :p
+Ou seja, pode refatorar os átomos anteriores sem esquecer de mudar para maiúsculo o `AtomName`. :p
 
 ## Quarks
 
