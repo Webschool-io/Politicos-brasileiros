@@ -169,9 +169,13 @@ Para definirmos cada átomo usamos a seguinte estrutura para o *Mongoose*:
 ### sigla
 
 ```js
-{
+'use strict';
+
+const AtomName = 'sigla';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 , required: true
 }
 ```
@@ -339,100 +343,16 @@ Porém são 2 átomos independentes.
 ### impeachment
 
 ```js
-{
+'use strict';
+
+const AtomName = 'impeachment';
+
+module.exports = {
   type: String
-, validate: require('./../hadrons/impeachmentValidateMongoose')
+, validate: require('./../hadrons/'+AtomName+'ValidateMongoose')
 }
 ```
 
-
-### partido_id
-
-```js
-{
-  type: String
-}
-```
-
-
-### cidade
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### estado
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### votosRecebidos
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### partidosAnteriores
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### denuncias
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### condenacoes
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### projetos
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
-
-
-### votacoes
-
-```js
-{
-  type: String
-, validate: require('./../hadrons/siglaValidateMongoose')
-}
-```
 
 ## Moléculas
 
