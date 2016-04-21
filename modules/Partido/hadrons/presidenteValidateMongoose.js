@@ -1,6 +1,6 @@
 'use strict';
 
-const QuarkName = 'isEmail';
+const QuarkName = 'isPresidente';
 
 module.exports = {
   validator: require('./../quarks/'+QuarkName)

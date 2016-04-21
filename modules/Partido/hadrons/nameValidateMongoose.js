@@ -1,4 +1,8 @@
+'use strict';
+
+const QuarkName = 'isName';
+
 module.exports = {
-  validator: require('./../quarks/isName')
-, message: require('./../quarks/isNameMessage')
+  validator: require('./../quarks/'+QuarkName)
+, message: require('./../quarks/'+QuarkName+'Message')
 };
