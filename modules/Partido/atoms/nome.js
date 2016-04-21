@@ -1,6 +1,6 @@
 'use strict';
 
-const AtomName = 'nome';
+const AtomName = 'name';
 
 module.exports = {
   type: String
